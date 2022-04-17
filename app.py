@@ -1,12 +1,11 @@
-from flask import Flask, request
-import joblib
-from algo import predict_label
+from flask import Flask, request, send_from_directory
+from api.algo import predict_label
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+def render_client():
+    return send_from_directory("client", "index.html")
 
 @app.route("/api/getlabel", methods=["POST"])
 def get_label():
