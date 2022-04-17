@@ -2,3 +2,5 @@ gunicorn
 flask
 nltk
 pandas
+numpy 
+sklearn
