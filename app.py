@@ -1,7 +1,9 @@
 from flask import Flask, request, send_from_directory
+#from flask_cors import CORS
 from api.algo import predict_label
 
 app = Flask(__name__, static_folder="client", static_url_path='')
+#CORS(app)
 
 @app.route("/")
 def render_client():

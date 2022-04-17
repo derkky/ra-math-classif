@@ -65,4 +65,5 @@ def predict_label(input):
     processed_series = input_series.apply(finalpreprocess)
     features = vectorize(processed_series)
     label = rf.predict(features)
-    return label
+
+    return pd.DataFrame({"question": input_series, "label": label}).to_dict(orient="records")
