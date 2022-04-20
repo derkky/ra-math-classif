@@ -55,7 +55,7 @@ function App() {
           <h3>
             Labels
           </h3>
-          {label ? label : "Submit a question"}
+          {label ? label.label : "Submit a question"}
         </div>
 
         <Grid setErrors={setErrors}/>
