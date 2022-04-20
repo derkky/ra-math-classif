@@ -6,7 +6,7 @@ import { Grid } from "./components/Grid"
 
 function App() {
   const [question, setQuestion] = useState(null)
-  const [label, setLabel] = useState(null)
+  const [labels, setLabels] = useState(null)
   const [errors, setErrors] = useState(null)
 
   const handleSubmitQuestion = async (e) => {
@@ -27,7 +27,7 @@ function App() {
    if (res.ok){
      setErrors(null)
     const resJson = await res.json()
-    setLabel(resJson.labels)
+    setLabels(resJson.labels)
     console.log(resJson)
    } else {
      console.log(res.statusText)
@@ -55,7 +55,7 @@ function App() {
           <h3>
             Labels
           </h3>
-          {label ? label.label : "Submit a question"}
+          {labels ? labels[0].label : "Submit a question"}
         </div>
 
         <Grid setErrors={setErrors}/>
