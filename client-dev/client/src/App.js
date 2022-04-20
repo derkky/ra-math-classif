@@ -11,6 +11,10 @@ function App() {
 
   const handleSubmitQuestion = async (e) => {
     e.preventDefault()
+    if (question == null){
+      setErrors("No question submitted!")
+      return
+    }
     
    const reqBody = {question: question}
 
@@ -39,26 +43,30 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Don and Brenda's Math Question Classifier</h1>
+      <div className="app-content">
+        <h1> Don and Brenda's Math Question Classifier</h1>
+        <h3> Input Single Question Below</h3>
+        <form>
+          <input type="textarea" rows="4" onChange={handleQuestionChange}/>
+          <input type="submit" onClick={handleSubmitQuestion}/>
+        </form>
 
-      <h3> Input Single Question Below</h3>
-      <form>
-        <input type="textarea" rows="4" onChange={handleQuestionChange}/>
-        <input type="submit" onClick={handleSubmitQuestion}/>
-      </form>
+        <div className="label-display">
+          <h3>
+            Labels
+          </h3>
+          {label ? label : "Submit a question"}
+        </div>
 
-      <div className="labelsDisplay">
-        <h3>
-          Labels
-        </h3>
-        {label ? label : "Submit a question"}
+        <Grid setErrors={setErrors}/>
+
+        <div className="error-display">
+          {errors ? errors : <div></div>}
+        </div>
       </div>
+      
 
-      <Grid setErrors={setErrors}/>
 
-      <div className="errorDisplay">
-        {errors ? errors : <div></div>}
-      </div>
     </div>
   );
 }

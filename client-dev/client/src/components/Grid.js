@@ -46,6 +46,11 @@ const Grid = (props) => {
       const handleCSVUpload = async () => {
         let data = []
         gridApi.forEachNode(row => data.push(row.data))
+
+        if (data.length == 0) {
+          setErrors("No questions submitted!")
+          return
+        }
         
         const questions = data.map(dat => dat.question)
         const reqBody = {question: questions}
@@ -75,12 +80,14 @@ const Grid = (props) => {
     return (
         <>
             <h3> Alternatively, input multiple questions (or upload CSV) below</h3>
-            <div className="gridButtons">
+            <div className="grid-buttons">
                 <button onClick={addRow}> Add row</button>
-                <input type="file" accept=".csv" onChange={handleImport}/>
-                <button onClick={handleCSVUpload}>Submit CSV</button>
+                <div className="csv-buttons">
+                  <input type="file" accept=".csv" onChange={handleImport}/>
+                  <button onClick={handleCSVUpload}>Submit CSV</button>
+                </div>
             </div>
-            <div className="ag-theme-alpine" style={{height: "40vh", width: "40vw"}}>
+            <div className="ag-theme-alpine" style={{height: "40vh", width: "100%"}}>
                 <AgGridReact 
                 rowData={rowData}
                 columnDefs={colDefs}

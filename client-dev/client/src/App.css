@@ -2,12 +2,23 @@
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
+  justify-content: center;
+}
+
+.app-content {
+  width: 40vw;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-
-.gridButtons {
+.grid-buttons {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+}
+
+.error-display {
+  font-weight: bold;
+  color: tomato;
 }
