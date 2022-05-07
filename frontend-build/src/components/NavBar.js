@@ -4,7 +4,21 @@ import { useState } from "react"
 
 const NavBar = () => {
 
-    const pages = ["Single Question", "Multiple Question", "About"]
+    const pages = [
+        {
+            title: "Single Question",
+            link: "singlequestion"
+        },
+        {
+            title: "Multiple Questions",
+            link: "multiplequestions"
+        },
+        {
+            title: "About",
+            link: "about"
+        }
+    ]
+
 
     const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -33,7 +47,7 @@ const NavBar = () => {
                         variant="text"
                         color="inherit"
                     >
-                        {pages.map(page => <Button key={page}> {page} </Button>)}
+                        {pages.map(page => <Button key={page.link} href={page.link}> {page.title} </Button>)}
                     </ButtonGroup>
 
 
@@ -52,9 +66,9 @@ const NavBar = () => {
                     component="nav"
                 >
                     {pages.map(page => (
-                        <ListItem key={page}>
-                            <ListItemButton>
-                                <ListItemText primary={page} />
+                        <ListItem key={page.link}>
+                            <ListItemButton component="a" href={page.link}>
+                                <ListItemText primary={page.title} />
                             </ListItemButton>
                         </ListItem>
                     )
