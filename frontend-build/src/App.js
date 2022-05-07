@@ -1,7 +1,8 @@
 import './App.css';
 import { useState } from "react"
 import { Grid } from "./components/Grid"
-
+import CssBaseline from "@mui/material/CssBaseline"
+import NavBar from "./components/NavBar"
 
 
 function App() {
@@ -11,28 +12,28 @@ function App() {
 
   const handleSubmitQuestion = async (e) => {
     e.preventDefault()
-    if (question == null){
+    if (question == null) {
       setErrors("No question submitted!")
       return
     }
-    
-   const reqBody = {question: question}
 
-   const res = await fetch("/api/getlabel", {
-     method: "POST",
-     body: JSON.stringify(reqBody),
-     headers: {"content-type": "application/json"}
-   })
+    const reqBody = { question: question }
 
-   if (res.ok){
-     setErrors(null)
-    const resJson = await res.json()
-    setLabels(resJson.labels)
-    console.log(resJson)
-   } else {
-     console.log(res.statusText)
-     setErrors(res.statusText)
-   }
+    const res = await fetch("/api/getlabel", {
+      method: "POST",
+      body: JSON.stringify(reqBody),
+      headers: { "content-type": "application/json" }
+    })
+
+    if (res.ok) {
+      setErrors(null)
+      const resJson = await res.json()
+      setLabels(resJson.labels)
+      console.log(resJson)
+    } else {
+      console.log(res.statusText)
+      setErrors(res.statusText)
+    }
 
   }
 
@@ -42,32 +43,12 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div className="app-content">
-        <h1> Don and Brenda's Math Question Classifier</h1>
-        <h3> Input Single Question Below</h3>
-        <form>
-          <input type="textarea" rows="4" onChange={handleQuestionChange}/>
-          <input type="submit" onClick={handleSubmitQuestion}/>
-        </form>
+    <>
+      <CssBaseline />
+      <NavBar/>
 
-        <div className="label-display">
-          <h3>
-            Labels
-          </h3>
-          {labels ? labels[0].label : "Submit a question"}
-        </div>
+    </>
 
-        <Grid setErrors={setErrors}/>
-
-        <div className="error-display">
-          {errors ? errors : <div></div>}
-        </div>
-      </div>
-      
-
-
-    </div>
   );
 }
 
