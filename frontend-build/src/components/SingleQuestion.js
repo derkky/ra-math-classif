@@ -28,7 +28,7 @@ const SingleQuestion = () => {
             setErrors("")
             setShowErrors(false)
             const resJson = await res.json()
-            setLabel(resJson.labels)
+            setLabel(resJson.labels[0])
             console.log(resJson)
         } else {
             console.log(res.statusText)
