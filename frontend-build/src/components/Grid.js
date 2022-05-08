@@ -124,7 +124,7 @@ const Grid = (props) => {
 
 
   return (
-    <Box sx={{ padding: "3em" }}>
+    <Box sx={{ padding: {sm: 1, md: 3} }}>
       <Box sx={{ display: "flex" }}>
         <Box sx={{ flex: 1 }}>
           <Button onClick={addRow}> Add Question</Button>

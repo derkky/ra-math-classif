@@ -11,7 +11,7 @@ const About = () => {
                 sx={{ maxHeight: 400 }}
             />
             <Box
-                sx={{ display: "flex", padding: 5 }}
+                sx={{ display: "flex", padding: { sm: 1, md: 5 } }}
             >
                 <Card
                     sx={{ flex: 1, minWidth: 320, position: "relative", bottom: 100 }}
@@ -21,7 +21,7 @@ const About = () => {
                         <Typography>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget tortor sapien. Nulla a porta erat. Fusce tempor et orci sed sagittis. Donec blandit urna dapibus, varius tortor vitae, scelerisque sem. Fusce commodo euismod metus et consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum elementum consequat lacus, sed faucibus arcu iaculis et. In sem leo, bibendum sit amet congue at, malesuada ac nunc.
                         </Typography>
-                        <br/>
+                        <br />
                         <Typography>
                             Sed dapibus urna laoreet sem pharetra, iaculis sodales lacus fermentum. Vivamus lacinia ante vitae consequat vestibulum. Etiam fermentum, lorem non porttitor iaculis, nibh mauris tempor erat, malesuada ornare ligula risus ac felis. Ut mollis elit sed massa maximus pharetra sed at nisl. Mauris tempor varius dolor. Quisque sit amet vestibulum turpis. Fusce fringilla placerat arcu, nec rutrum arcu posuere at. Phasellus egestas laoreet arcu a pellentesque. Maecenas egestas volutpat ex, nec finibus justo placerat at. Aenean consequat laoreet elit, ut finibus risus gravida in. Quisque dui ex, malesuada non dui pulvinar, mollis eleifend felis. Fusce vitae libero leo. Morbi eget leo sit amet nisi venenatis laoreet a et enim. Morbi ac eleifend libero, et finibus nunc.
                         </Typography>
