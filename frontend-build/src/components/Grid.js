@@ -2,13 +2,14 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { useState, useEffect } from "react"
-import { Button, ButtonGroup, Box, styled } from "@mui/material"
+import { Button, Alert, Box, styled } from "@mui/material"
 
 const Papa = require("papaparse")
 
 
 const Grid = (props) => {
   const [errors, setErrors] = useState("")
+  const [showErrors, setShowErrors] = useState(false)
   const [gridApi, setGridApi] = useState(null)
 
   const handleGridReady = (params) => {
@@ -37,7 +38,15 @@ const Grid = (props) => {
   const [rowData] = useState([])
 
   const [colDefs] = useState([
-    { field: 'question', editable: true, lockPosition: true, resizable: true },
+    {
+      field: 'question',
+      editable: true,
+      lockPosition: true,
+      resizable: true,
+      wrapText: true,
+      autoHeight: true,
+      cellEditor: "agLargeTextCellEditor",
+    },
     { field: 'label', editable: false, lockPosition: true, resizable: true },
   ]);
 
@@ -66,6 +75,7 @@ const Grid = (props) => {
     gridApi.forEachNode(row => data.push(row.data))
 
     if (data.length == 0) {
+      setShowErrors(true)
       setErrors("No questions submitted!")
       return
     }
@@ -80,13 +90,15 @@ const Grid = (props) => {
     })
 
     if (res.ok) {
-      setErrors(null)
+      setErrors("")
+      setShowErrors(false)
       const resJson = await res.json()
       gridApi.setRowData(resJson.labels)
       console.log(resJson)
 
     } else {
       console.log(res.statusText)
+      setShowErrors(true)
       setErrors(res.statusText)
     }
   }
@@ -97,14 +109,14 @@ const Grid = (props) => {
 
   const deleteRow = (e) => {
     gridApi.applyTransactionAsync({ remove: [e.node.data] })
-}
+  }
 
-const reAddRow = (e) => {
+  const reAddRow = (e) => {
     // Check that row doesn't already exist
     if (gridApi.getRowNode(e.node.id) == undefined) {
-        gridApi.applyTransactionAsync({ add: [e.node.data] })
+      gridApi.applyTransactionAsync({ add: [e.node.data] })
     }
-}
+  }
 
   const Input = styled('input')({
     display: 'none',
@@ -138,6 +150,17 @@ const reAddRow = (e) => {
           onRowDragEnd={reAddRow}
         />
       </div>
+
+      {showErrors ?
+        <Box
+          mt={2}
+        >
+          <Alert severity="error">
+            {errors}
+          </Alert>
+        </Box>
+        : null
+      }
 
 
     </Box>

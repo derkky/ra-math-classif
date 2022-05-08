@@ -1,11 +1,13 @@
 import Grid from "./Grid"
-import { Typography } from "@mui/material"
+import { Card, Box } from "@mui/material"
 
 const MultipleQuestions = () => {
     return (
-        <>
-            <Grid />
-        </>
+        <Box sx={{ padding: 3 }}>
+            <Card sx={{ boxShadow: 5 }}>
+                <Grid />
+            </Card>
+        </Box>
     )
 }
 

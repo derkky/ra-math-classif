@@ -45,12 +45,12 @@ const SingleQuestion = () => {
 
     return (
         <Box
-            sx={{ display: "flex", flexWrap: "wrap", padding: "3em", gap: "2em" }}>
-            <Card sx={{ minWidth: 500, flex: 1 }}>
+            sx={{ display: "flex", flexWrap: "wrap", padding: 3, gap: 2 }}>
+            <Card sx={{ minWidth: 320, flex: 1, boxShadow: 5 }}>
                 <CardHeader title="Type in your question below" />
 
                 <CardContent>
-                    <Box sx={{ display: "flex", margin: "1em" }}>
+                    <Box sx={{ display: "flex", margin: 1}}>
                         <TextField
                             sx={{ flex: 1 }}
                             multiline
@@ -72,7 +72,7 @@ const SingleQuestion = () => {
 
                 </CardContent>
             </Card>
-            <Card sx={{ minWidth: 500, flex: 1 }}>
+            <Card sx={{ minWidth: 320, flex: 1, boxShadow: 5 }}>
                 <CardHeader title="The type of your question is..." />
 
                 <CardContent>
