@@ -77,7 +77,7 @@ const SingleQuestion = () => {
 
                 <CardContent>
                     <Typography variant="h1" align="center">
-                        {label}
+                        {label.label}
                     </Typography>
                 </CardContent>
             </Card>
