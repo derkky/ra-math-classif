@@ -1,5 +1,10 @@
 import { Typography, Card, CardContent, CardHeader, CardActions, Box, Button, TextField, } from "@mui/material"
 import { useState } from "react"
+import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material/styles"
+
+
+let theme = createTheme()
+theme = responsiveFontSizes(theme)
 
 const SingleQuestion = () => {
 
@@ -50,7 +55,7 @@ const SingleQuestion = () => {
                 <CardHeader title="Type in your question below" />
 
                 <CardContent>
-                    <Box sx={{ display: "flex", margin: 1}}>
+                    <Box sx={{ display: "flex", margin: 1 }}>
                         <TextField
                             sx={{ flex: 1 }}
                             multiline
@@ -75,10 +80,12 @@ const SingleQuestion = () => {
             <Card sx={{ minWidth: 320, flex: 1, boxShadow: 5 }}>
                 <CardHeader title="The type of your question is..." />
 
-                <CardContent>
-                    <Typography variant="h1" align="center">
-                        {label.label}
-                    </Typography>
+                <CardContent sx={{ fontSize: 32 }}>
+                    <ThemeProvider theme={theme}>
+                        <Typography variant="h2" align="center">
+                            {label.label}
+                        </Typography>
+                    </ThemeProvider>
                 </CardContent>
             </Card>
         </Box>
