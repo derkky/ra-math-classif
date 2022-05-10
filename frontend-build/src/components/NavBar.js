@@ -39,7 +39,7 @@ const NavBar = () => {
                         sx={{ display: "flex", flex: 1 }}
                         variant="h6"
                     >
-                        NUS Math Classifier
+                        Keptan Classifier
                     </Typography>
 
                     <ButtonGroup
@@ -54,19 +54,27 @@ const NavBar = () => {
                 </Toolbar>
 
             </AppBar>
+
             <Drawer
                 open={drawerOpen}
                 anchor="left"
                 onClose={() => { setDrawerOpen(false) }}
+                PaperProps={{
+                    sx: {
+                        bgcolor: "primary.main",
+                        color: "primary.contrastText"
+                    }
+                }}
             >
 
                 <List
-                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'primary.main' }}
                     color="inherit"
                     component="nav"
                 >
                     {pages.map(page => (
-                        <ListItem key={page.link}>
+                        <ListItem key={page.link}
+                        >
                             <ListItemButton component="a" href={page.link}>
                                 <ListItemText primary={page.title} />
                             </ListItemButton>
@@ -76,6 +84,8 @@ const NavBar = () => {
                 </List>
 
             </Drawer>
+
+
         </>
 
     )

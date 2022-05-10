@@ -19,11 +19,19 @@ const About = () => {
                     <CardHeader title="About" />
                     <CardContent>
                         <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget tortor sapien. Nulla a porta erat. Fusce tempor et orci sed sagittis. Donec blandit urna dapibus, varius tortor vitae, scelerisque sem. Fusce commodo euismod metus et consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum elementum consequat lacus, sed faucibus arcu iaculis et. In sem leo, bibendum sit amet congue at, malesuada ac nunc.
+                            Acknowledging the difficulties in scaling personalised teaching environments within the S$84.5b educational market, Keptan aims to provide an easy-to-use and topic agnostic AI-powered platform to enable educational and training institutions of all sizes and industries.
                         </Typography>
                         <br />
                         <Typography>
-                            Sed dapibus urna laoreet sem pharetra, iaculis sodales lacus fermentum. Vivamus lacinia ante vitae consequat vestibulum. Etiam fermentum, lorem non porttitor iaculis, nibh mauris tempor erat, malesuada ornare ligula risus ac felis. Ut mollis elit sed massa maximus pharetra sed at nisl. Mauris tempor varius dolor. Quisque sit amet vestibulum turpis. Fusce fringilla placerat arcu, nec rutrum arcu posuere at. Phasellus egestas laoreet arcu a pellentesque. Maecenas egestas volutpat ex, nec finibus justo placerat at. Aenean consequat laoreet elit, ut finibus risus gravida in. Quisque dui ex, malesuada non dui pulvinar, mollis eleifend felis. Fusce vitae libero leo. Morbi eget leo sit amet nisi venenatis laoreet a et enim. Morbi ac eleifend libero, et finibus nunc.
+                            The founders comprises of Professor Jussi Keppo and Dr Tan Hong Ming, both from the Department of Analytics and Operations at NUS Business School. Jussi Keppo is the Co-Founder of X0PA AI (Series A USD$4.2M) and is also a professor at NUS Business School and the Research Director of the Institute of Operations Research and Analytics at NUS. Tan Hong Ming is a lecturer at the NUS Business School and is also a research fellow at the SIA-NUS Corp Lab working on Transforming Competency and Skill Development. The team's depth of knowledge in AI methodologies alongside a strong wealth of experience in creating commercially desirable algorithms allows for both speed and accuracy in product iterations for commercial success.
+                        </Typography>
+                        <br />
+                        <Typography>
+                            Keptan's patent-pending AI continuously and automatically tailors instruction to the individual, allowing each person to learn important material in less time than current teaching techniques and making it a critical tool for tuition classes, schools and a range of other teaching environments that struggle to teach large and diverse groups of students. Topic agnostic capabilities gives Keptan an advantage over other edutech companies that are subject specific (e.g., Math questions only).
+                        </Typography>
+                        <br />
+                        <Typography>
+                            The company is currently discussing a pilot with Science Ventures Learning Hub, and has an LOI from MediVR. Keptan seeking a S$100,000 funding to scale its engineering team to further accelerate its tech capabilities and sales teams to begin generating revenue, and shift into AR/VR capabilities in the metaverse.
                         </Typography>
                     </CardContent>
                 </Card>
