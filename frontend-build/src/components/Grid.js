@@ -79,6 +79,12 @@ const Grid = (props) => {
       return
     }
 
+    if (data.filter(dat => dat.question == "").length > 0){
+      setShowErrors(true)
+      setErrors("No blank questions allowed!")
+      return
+    }
+
     const questions = data.map(dat => dat.question)
     const reqBody = { question: questions }
 

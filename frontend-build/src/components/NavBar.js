@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Box, IconButton, ButtonGroup, Button, Typography, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import { useState } from "react"
+import logo from "../assets/logo.PNG"
 
 const NavBar = () => {
 
@@ -19,7 +20,6 @@ const NavBar = () => {
         }
     ]
 
-
     const [drawerOpen, setDrawerOpen] = useState(false)
 
     return (
@@ -34,6 +34,7 @@ const NavBar = () => {
                     >
                         <MenuIcon />
                     </IconButton>
+
                     <Typography
                         color="inherit"
                         sx={{ display: "flex", flex: 1 }}
