@@ -52,7 +52,7 @@ const SingleQuestion = () => {
         <Box
             sx={{ display: "flex", flexWrap: "wrap", padding: 3, gap: 2 }}>
             <Card sx={{ minWidth: 320, flex: 1, boxShadow: 5 }}>
-                <CardHeader title="Type in your question below" />
+                <CardHeader title="Key in your question below" />
 
                 <CardContent>
                     <Box sx={{ display: "flex", margin: 1 }}>

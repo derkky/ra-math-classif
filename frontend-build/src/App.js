@@ -10,7 +10,9 @@ import { ThemeProvider, createTheme } from "@mui/material/styles"
 let theme = createTheme({
   palette: {
     primary: { main: "#112d4e", contrastText: "#facf39" },
-
+  },
+  typography: {
+    fontFamily: "Lato"
   }
 })
 

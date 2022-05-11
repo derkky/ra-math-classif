@@ -37,7 +37,7 @@ const NavBar = () => {
                     <Typography
                         color="inherit"
                         sx={{ display: "flex", flex: 1 }}
-                        variant="h6"
+                        variant="h5"
                     >
                         Keptan Classifier
                     </Typography>
@@ -68,7 +68,7 @@ const NavBar = () => {
             >
 
                 <List
-                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'primary.main' }}
+                    sx={{ width: '100%', maxWidth: 360 }}
                     color="inherit"
                     component="nav"
                 >

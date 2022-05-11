@@ -26,7 +26,6 @@ const Grid = (props) => {
       while (gridApi == null)
         await new Promise(resolve => setTimeout(resolve, 1000));
       resizeGrid()
-      setTimeout(() => { gridApi.setRowData(props.rowData) }, 0)
       window.addEventListener("resize", resizeGrid)
     })();
 
@@ -107,15 +106,9 @@ const Grid = (props) => {
     gridApi.applyTransactionAsync({ add: [{}] })
   }
 
-  const deleteRow = (e) => {
-    gridApi.applyTransactionAsync({ remove: [e.node.data] })
-  }
-
-  const reAddRow = (e) => {
-    // Check that row doesn't already exist
-    if (gridApi.getRowNode(e.node.id) == undefined) {
-      gridApi.applyTransactionAsync({ add: [e.node.data] })
-    }
+  const deleteRow = () => {
+    const selection = gridApi.getSelectedRows()
+    gridApi.applyTransactionAsync({ remove: selection })
   }
 
   const Input = styled('input')({
@@ -128,6 +121,7 @@ const Grid = (props) => {
       <Box sx={{ display: "flex" }}>
         <Box sx={{ flex: 1 }}>
           <Button onClick={addRow}> Add Question</Button>
+          <Button onClick={deleteRow}> Delete Selected Questions </Button>
           <label>
             <Input type="file" accept=".csv" onChange={handleImport} />
             <Button component="span"> Upload CSV </Button>
@@ -145,9 +139,11 @@ const Grid = (props) => {
           rowData={rowData}
           columnDefs={colDefs}
           onGridReady={handleGridReady}
-          rowDragEntireRow={true}
-          onRowDragLeave={deleteRow}
-          onRowDragEnd={reAddRow}
+          rowSelection="multiple"
+          onCellValueChanged={() => {
+            setErrors("")
+            setShowErrors(false)
+          }}
         />
       </div>
 
