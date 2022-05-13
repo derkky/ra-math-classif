@@ -15,8 +15,7 @@ const SingleQuestion = () => {
 
     const handleSubmitQuestion = async (e) => {
         e.preventDefault()
-        console.log(question)
-        if (question == null) {
+        if (question == null || question == "") {
             setErrors("No question submitted!")
             return
         }

@@ -69,9 +69,13 @@ const Grid = (props) => {
     )
   }
 
-  const handleCSVUpload = async () => {
+  const handleSubmit = async () => {
+    gridApi.stopEditing()
+
     let data = []
     gridApi.forEachNode(row => data.push(row.data))
+
+    console.log(data)
 
     if (data.length == 0) {
       setShowErrors(true)
@@ -79,7 +83,7 @@ const Grid = (props) => {
       return
     }
 
-    if (data.filter(dat => dat.question == "").length > 0){
+    if (data.filter(dat => (typeof dat.question == "undefined" || dat.question == "")).length > 0) {
       setShowErrors(true)
       setErrors("No blank questions allowed!")
       return
@@ -109,10 +113,12 @@ const Grid = (props) => {
   }
 
   const addRow = () => {
+    gridApi.stopEditing()
     gridApi.applyTransactionAsync({ add: [{}] })
   }
 
   const deleteRow = () => {
+    gridApi.stopEditing()
     const selection = gridApi.getSelectedRows()
     gridApi.applyTransactionAsync({ remove: selection })
   }
@@ -123,7 +129,7 @@ const Grid = (props) => {
 
 
   return (
-    <Box sx={{ padding: {sm: 1, md: 3} }}>
+    <Box sx={{ padding: { sm: 1, md: 3 } }}>
       <Box sx={{ display: "flex" }}>
         <Box sx={{ flex: 1 }}>
           <Button onClick={addRow}> Add Question</Button>
@@ -134,7 +140,7 @@ const Grid = (props) => {
           </label>
         </Box>
         <Box>
-          <Button onClick={handleCSVUpload}> Submit Questions</Button>
+          <Button onClick={handleSubmit}> Submit Questions</Button>
         </Box>
 
 
@@ -147,6 +153,10 @@ const Grid = (props) => {
           onGridReady={handleGridReady}
           rowSelection="multiple"
           onCellValueChanged={() => {
+            setErrors("")
+            setShowErrors(false)
+          }}
+          onCellEditingStarted={() => {
             setErrors("")
             setShowErrors(false)
           }}

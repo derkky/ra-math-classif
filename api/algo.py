@@ -11,6 +11,26 @@ from joblib import load
 rf = load("rf.joblib")
 tfidf_vectorizer = load("tfidf_vectorizer.joblib")
 
+# convert symbols to words
+def convert_symbols(problem_string):
+    
+    symbol_map = {
+        "%": " percent ",
+        "$": " dollar ",
+        "△": " triangle ",
+        "|": " absolute ",
+        "+": " plus ",
+        "-": " minus ",
+        "=": " equal ",
+        ":": " ratio ",
+        "/": " divide ",
+        "*": " multiply "
+    }
+    
+    for symbol_key, symbol_value in symbol_map.items():
+        problem_string = problem_string.replace(symbol_key, symbol_value)
+        
+    return problem_string
 
 #convert to lowercase, strip and remove punctuations
 def preprocess(text):
@@ -62,7 +82,8 @@ def vectorize(processed_series):
 
 def predict_label(input):
     input_series = pd.Series(input)
-    processed_series = input_series.apply(finalpreprocess)
+    converted_series = input_series.apply(convert_symbols)
+    processed_series = converted_series.apply(finalpreprocess)
     features = vectorize(processed_series)
     label = rf.predict(features)
 
